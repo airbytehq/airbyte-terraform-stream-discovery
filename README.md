@@ -8,9 +8,11 @@ and will fetch the streams from the airbyte api and return a list of streams wit
 ```
 {
   propertyFields: list(list(string))
-  sourceDefinedCursorField: boolean
+  sourceDefinedCursorField: bool
   sourceDefinedPrimaryKey: list(string)
   streamName: string
   syncModes: list(string)
 }
 ```
+
+You can then use [terraform's expressions](https://developer.hashicorp.com/terraform/language/expressions) to manipulate this into the input required for the [Airbyte Connection configuration.streams](https://registry.terraform.io/providers/airbytehq/airbyte/latest/docs/resources/connection#nestedatt--configurations--streams) object.

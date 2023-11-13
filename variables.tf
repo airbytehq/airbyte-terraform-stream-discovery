@@ -19,3 +19,9 @@ variable "airbyte_host_url" {
   description = "URL where airbyte is hosted"
   default = "https://api.airbyte.com"
 }
+
+variable "ignore_cache" {
+  type = bool
+  description = "Whether to pull values from the cache or not"
+  default = true
+}
