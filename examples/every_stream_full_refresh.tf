@@ -1,7 +1,7 @@
 
 # Get the streams
 module "source_postgres_streams" {
-  source = "github.com/airbytehq/terraform-airbyte-stream-discovery"
+  source = "airbytehq/stream-discovery/airbyte"
   airbyte_api_token = "FOO" # REPLACE
   source_id = airbyte_source_postgres.my_source_postgres.source_id
   destination_id = airbyte_destination_bigquery.my_destination_bigquery.destination_id
