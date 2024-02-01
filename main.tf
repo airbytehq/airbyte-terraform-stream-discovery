@@ -22,6 +22,6 @@ data "http" "stream_source" {
   # Optional request headers
   request_headers = {
     Accept = "application/json"
-    Authorization = "Bearer ${var.airbyte_api_token}"
+    Authorization = local.authorization_header
   }
 }
