@@ -7,6 +7,16 @@ module "source_postgres_streams" {
   destination_id = airbyte_destination_bigquery.my_destination_bigquery.destination_id
 }
 
+# # Example with basic auth (with Airbyte OSS)
+# module "source_postgres_streams" {
+#   source = "airbytehq/stream-discovery/airbyte"
+#   airbyte_basic_auth_username = "airbyte" # REPLACE
+#   airbyte_basic_auth_password = "password" # REPLACE
+#   airbyte_host_url = "http://localhost:8006" # When running locally with default docker-compose ports
+#   source_id = airbyte_source_postgres.my_source_postgres.source_id
+#   destination_id = airbyte_destination_bigquery.my_destination_bigquery.destination_id
+# }
+
 # Convert them to the required structure
 locals {
   full_refresh_streams = [for stream in module.source_postgres_streams.streams : 

@@ -2,6 +2,7 @@ variable "airbyte_api_token" {
   type = string
   sensitive = true
   description = "A valid api token for airbyte"
+  default = ""
 }
 
 variable "source_id" {
@@ -18,6 +19,19 @@ variable "airbyte_host_url" {
   type = string
   description = "URL where airbyte is hosted"
   default = "https://api.airbyte.com"
+}
+
+variable airbyte_basic_auth_username {
+  type = string
+  description = "Username for basic auth"
+  default = ""
+}
+
+variable airbyte_basic_auth_password {
+  type = string
+  description = "Password for basic auth"
+  sensitive = true
+  default = ""
 }
 
 variable "ignore_cache" {
