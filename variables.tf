@@ -2,10 +2,7 @@ variable "airbyte_api_token" {
   type = string
   sensitive = true
   description = "A valid api token for airbyte"
-  validation {
-    condition = var.airbyte_api_token != "" || (var.airbyte_basic_auth_username != "" && var.airbyte_basic_auth_password != "")
-    error_message = "Either an api token or basic auth credentials must be provided"
-  }
+  default = ""
 }
 
 variable "source_id" {
@@ -27,12 +24,14 @@ variable "airbyte_host_url" {
 variable airbyte_basic_auth_username {
   type = string
   description = "Username for basic auth"
+  default = ""
 }
 
 variable airbyte_basic_auth_password {
   type = string
   description = "Password for basic auth"
   sensitive = true
+  default = ""
 }
 
 variable "ignore_cache" {
