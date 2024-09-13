@@ -1,27 +1,33 @@
 variable "airbyte_api_token" {
-  type = string
-  sensitive = true
+  type        = string
+  sensitive   = true
   description = "A valid api token for airbyte"
 }
 
 variable "source_id" {
-  type = string
+  type        = string
   description = "The ID of the source to discover streams from"
 }
 
 variable "destination_id" {
-  type = string
+  type        = string
   description = "The ID of the destination to write streams to"
 }
 
 variable "airbyte_host_url" {
-  type = string
+  type        = string
   description = "URL where airbyte is hosted"
-  default = "https://api.airbyte.com"
+  default     = "https://api.airbyte.com"
 }
 
 variable "ignore_cache" {
-  type = bool
+  type        = bool
   description = "Whether to pull values from the cache or not"
-  default = true
+  default     = true
+}
+
+variable "request_timeout" {
+  type        = number
+  description = "Change the default http request timeout (in miliseconds)"
+  default     = null
 }

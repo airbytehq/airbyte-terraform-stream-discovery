@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     http = {
-      source = "hashicorp/http"
+      source  = "hashicorp/http"
       version = ">= 3.4.0"
     }
 
@@ -13,7 +13,9 @@ data "http" "stream_source" {
 
   # Optional request headers
   request_headers = {
-    Accept = "application/json"
+    Accept        = "application/json"
     Authorization = "Bearer ${var.airbyte_api_token}"
   }
+
+  request_timeout_ms = var.request_timeout
 }
