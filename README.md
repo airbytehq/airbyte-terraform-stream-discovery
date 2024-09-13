@@ -1,5 +1,5 @@
 # Stream Discovery
-Presently our terraform provider does not provide access to the streams of a source. 
+Presently our terraform provider does not provide access to the streams of a source.
 When configuring a connection between a source and destination, you need the streams and their sync modes.
 
 This module is a wrapper around the [Get Stream Properties Endpoint](https://reference.airbyte.com/reference/liststreams)
@@ -21,17 +21,17 @@ Here is an example usage:
 
 ```
 module "source_postgres_streams" {
-  source = "airbytehq/stream-discovery/airbyte"
+  source            = "airbytehq/stream-discovery/airbyte"
   airbyte_api_token = "FOO" # REPLACE
-  source_id = airbyte_source_postgres.my_source_postgres.source_id
-  destination_id = airbyte_destination_bigquery.my_destination_bigquery.destination_id
+  source_id         = airbyte_source_postgres.my_source_postgres.source_id
+  destination_id    = airbyte_destination_bigquery.my_destination_bigquery.destination_id
 }
 
 # Convert them to the required structure
 locals {
-  full_refresh_streams = [for stream in module.source_postgres_streams.streams : 
-    { 
-      name = stream.streamName
+  full_refresh_streams = [for stream in module.source_postgres_streams.streams :
+    {
+      name      = stream.streamName
       sync_mode = "full_refresh_overwrite"
     }
   ]
